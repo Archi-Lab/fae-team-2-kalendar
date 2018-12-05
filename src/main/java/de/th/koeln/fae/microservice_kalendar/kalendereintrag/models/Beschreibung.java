@@ -8,8 +8,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Beschreibung {
 
-    @Getter
-    @Setter
     private String beschreibung;
 
     public Beschreibung(){}
@@ -18,6 +16,14 @@ public class Beschreibung {
         if(beschreibung.length() > 200){
             throw new IllegalArgumentException("Die Beschreibung darf nur aus 200 Zeichen bestehen.");
         }
+        this.beschreibung = beschreibung;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
     }
 }

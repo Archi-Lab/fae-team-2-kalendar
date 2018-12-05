@@ -1,9 +1,11 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
+import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Kalendereintrag {
@@ -12,23 +14,59 @@ public class Kalendereintrag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Getter
-    @Setter
+    @ManyToMany
+    private List<Kalender> kalenderListe;
+
     @Embedded
     private Datum datum;
 
-    @Getter
-    @Setter
     @Embedded
     private Ort ort;
 
-    @Getter
-    @Setter
     @Embedded
     private Titel titel;
 
-    @Getter
-    @Setter
     @Embedded
     private Beschreibung beschreibung;
+
+
+    public List<Kalender> getKalenderListe() {
+        return kalenderListe;
+    }
+
+    public void setKalenderListe(List<Kalender> kalenderListe) {
+        this.kalenderListe = kalenderListe;
+    }
+
+    public Datum getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Datum datum) {
+        this.datum = datum;
+    }
+
+    public Ort getOrt() {
+        return ort;
+    }
+
+    public void setOrt(Ort ort) {
+        this.ort = ort;
+    }
+
+    public Titel getTitel() {
+        return titel;
+    }
+
+    public void setTitel(Titel titel) {
+        this.titel = titel;
+    }
+
+    public Beschreibung getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(Beschreibung beschreibung) {
+        this.beschreibung = beschreibung;
+    }
 }

@@ -8,8 +8,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Name {
 
-    @Getter
-    @Setter
     private String name;
 
     public Name(){
@@ -26,5 +24,11 @@ public class Name {
 
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

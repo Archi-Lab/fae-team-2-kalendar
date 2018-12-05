@@ -9,8 +9,6 @@ import java.util.TimeZone;
 @Embeddable
 public class Zeitzone {
 
-    @Getter
-    @Setter
     private TimeZone zeitzone;
 
     public Zeitzone(){
@@ -21,4 +19,11 @@ public class Zeitzone {
         this.zeitzone = zeitzone;
     }
 
+    public TimeZone getZeitzone() {
+        return zeitzone;
+    }
+
+    public void setZeitzone(TimeZone zeitzone) {
+        this.zeitzone = zeitzone;
+    }
 }

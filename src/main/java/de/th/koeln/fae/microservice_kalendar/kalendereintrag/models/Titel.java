@@ -8,8 +8,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Titel {
 
-    @Getter
-    @Setter
     private String titel;
 
     public Titel(){
@@ -21,4 +19,11 @@ public class Titel {
         this.titel = titel;
     }
 
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
 }

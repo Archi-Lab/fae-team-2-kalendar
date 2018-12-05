@@ -9,8 +9,6 @@ import java.util.Calendar;
 @Embeddable
 public class Datum {
 
-    @Getter
-    @Setter
     private Calendar datum;
 
     public Datum(){
@@ -18,6 +16,14 @@ public class Datum {
     }
 
     public Datum (Calendar datum){
+        this.datum = datum;
+    }
+
+    public Calendar getDatum() {
+        return datum;
+    }
+
+    public void setDatum(Calendar datum) {
         this.datum = datum;
     }
 }

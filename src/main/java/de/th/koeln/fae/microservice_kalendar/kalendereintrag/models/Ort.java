@@ -8,20 +8,12 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Ort {
 
-    @Getter
-    @Setter
     private String strasse;
 
-    @Getter
-    @Setter
     private String hausnummer;
 
-    @Getter
-    @Setter
     private String ort;
 
-    @Getter
-    @Setter
     private String plz;
 
     public Ort() {
@@ -54,4 +46,35 @@ public class Ort {
         this.plz = plz;
     }
 
+    public String getStrasse() {
+        return strasse;
+    }
+
+    public void setStrasse(String strasse) {
+        this.strasse = strasse;
+    }
+
+    public String getHausnummer() {
+        return hausnummer;
+    }
+
+    public void setHausnummer(String hausnummer) {
+        this.hausnummer = hausnummer;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
 }

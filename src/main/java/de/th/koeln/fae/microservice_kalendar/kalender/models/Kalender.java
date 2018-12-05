@@ -1,9 +1,11 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
+import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Kalender {
@@ -12,14 +14,17 @@ public class Kalender {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "kalender_kalendereintrag",
+            joinColumns = @JoinColumn(name = "kalender_id", referencedColumnName = "id"),
+
+            inverseJoinColumns = @JoinColumn(name = "kalendereintrag_id", referencedColumnName = "id"))
+    private List<Kalendereintrag> kalendereintragListe;
+
     @Embedded
-    @Getter
-    @Setter
     private Name name;
 
     @Embedded
-    @Getter
-    @Setter
     private Zeitzone zeitzone;
 
     @Override
@@ -30,4 +35,27 @@ public class Kalender {
                 '}';
     }
 
+    public List<Kalendereintrag> getKalendereintragListe() {
+        return kalendereintragListe;
+    }
+
+    public void setKalendereintragListe(List<Kalendereintrag> kalendereintragListe) {
+        this.kalendereintragListe = kalendereintragListe;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Zeitzone getZeitzone() {
+        return zeitzone;
+    }
+
+    public void setZeitzone(Zeitzone zeitzone) {
+        this.zeitzone = zeitzone;
+    }
 }
