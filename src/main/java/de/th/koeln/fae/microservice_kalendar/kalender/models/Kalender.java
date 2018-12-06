@@ -14,12 +14,12 @@ public class Kalender {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "kalender_kalendereintrag",
-            joinColumns = @JoinColumn(name = "kalender_id", referencedColumnName = "id"),
-
-            inverseJoinColumns = @JoinColumn(name = "kalendereintrag_id", referencedColumnName = "id"))
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "kalender_id")
     private List<Kalendereintrag> kalendereintragListe;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private DVP dvp;
 
     @Embedded
     private Name name;
@@ -57,5 +57,13 @@ public class Kalender {
 
     public void setZeitzone(Zeitzone zeitzone) {
         this.zeitzone = zeitzone;
+    }
+
+    public DVP getDvp() {
+        return dvp;
+    }
+
+    public void setDvp(DVP dvp) {
+        this.dvp = dvp;
     }
 }
