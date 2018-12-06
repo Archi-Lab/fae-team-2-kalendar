@@ -12,9 +12,6 @@ public class Kalendereintrag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
-    private List<Kalender> kalenderListe;
-
     @Embedded
     private Datum datum;
 
@@ -27,13 +24,15 @@ public class Kalendereintrag {
     @Embedded
     private Beschreibung beschreibung;
 
+    @ManyToOne
+    private Kalender kalender;
 
-    public List<Kalender> getKalenderListe() {
-        return kalenderListe;
+    public Kalender getKalender() {
+        return kalender;
     }
 
-    public void setKalenderListe(List<Kalender> kalenderListe) {
-        this.kalenderListe = kalenderListe;
+    public void setKalender(Kalender kalender) {
+        this.kalender = kalender;
     }
 
     public Datum getDatum() {
