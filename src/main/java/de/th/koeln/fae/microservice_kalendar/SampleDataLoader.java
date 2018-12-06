@@ -50,12 +50,12 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         //fülle Kalendereintrag
         Beschreibung beschreibung = new Beschreibung("Ein neues Gebiss wird benötigt.");
         Datum datum = new Datum(new GregorianCalendar(2019,02,10, 10, 20));
-        Ort ort = new Ort("Musterstrasse", "11", "Musterhausen", "51674");
-        Titel titel = new Titel("Zahnartzt");
+        Adresse adresse = new Adresse("Musterstrasse", "11", "Musterhausen", "51674");
+        Titel titel = new Titel("Zahnarzt");
 
         kalendereintrag.setBeschreibung(beschreibung);
         kalendereintrag.setDatum(datum);
-        kalendereintrag.setOrt(ort);
+        kalendereintrag.setAdresse(adresse);
         kalendereintrag.setTitel(titel);
         kalendereintrag.setKalenderListe(kalenderListe);
 

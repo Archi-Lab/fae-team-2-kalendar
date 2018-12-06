@@ -1,8 +1,6 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,7 +19,7 @@ public class Kalendereintrag {
     private Datum datum;
 
     @Embedded
-    private Ort ort;
+    private Adresse adresse;
 
     @Embedded
     private Titel titel;
@@ -46,12 +44,12 @@ public class Kalendereintrag {
         this.datum = datum;
     }
 
-    public Ort getOrt() {
-        return ort;
+    public Adresse getAdresse() {
+        return adresse;
     }
 
-    public void setOrt(Ort ort) {
-        this.ort = ort;
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 
     public Titel getTitel() {

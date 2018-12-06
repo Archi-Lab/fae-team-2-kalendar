@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Ort {
+public class Adresse {
 
     private String strasse;
 
@@ -16,11 +16,11 @@ public class Ort {
 
     private String plz;
 
-    public Ort() {
+    public Adresse() {
 
     }
 
-    public Ort(String strasse, String hausnummer, String ort, String plz) {
+    public Adresse(String strasse, String hausnummer, String ort, String plz) {
 
         String expressionGrossKlein = "^[a-zA-Z\\s]+";
         if (!strasse.matches(expressionGrossKlein)) {
