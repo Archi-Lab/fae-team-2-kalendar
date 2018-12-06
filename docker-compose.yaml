@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     image: kalenderweb
     ports:
-      - 8080
+      - 8080:8080
     networks:
       - network1
 
