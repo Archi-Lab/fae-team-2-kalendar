@@ -10,7 +10,7 @@ services:
     networks:
       - kalendar_ms_db
   # Spezifikation der Datenbank
-  db: # Sample DB
+  db:
     image: postgres:10.1 # Basis Image
     volumes:
     - kalendar_db:/var/lib/postgresql/data # Volume um Daten persistent zu speichern. Alle Daten aus dem Pfad (rechts) werden in das Volume abgelegt.
