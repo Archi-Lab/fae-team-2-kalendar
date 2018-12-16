@@ -1,14 +1,30 @@
 version: '2.2'
 services:
+  # Spezifikation des Kalender MS
   kalender:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: kalenderweb
+    build: .
+    depends_on:
+      - db
     ports:
       - 8080:8080
     networks:
-      - network1
-
+      - kalendar_ms_db
+  # Spezifikation der Datenbank
+  db: # Sample DB
+    image: postgres:10.1 # Basis Image
+    volumes:
+    - kalendar_db:/var/lib/postgresql/data # Volume um Daten persistent zu speichern. Alle Daten aus dem Pfad (rechts) werden in das Volume abgelegt.
+    environment: # Konfiguration über env-Variablen
+    - POSTGRES_PASSWORD=kalendar_2018
+    - POSTGRES_USER=kalendar
+    - POSTGRES_DB=kalendar
+    - PGDATA=/var/lib/postgresql/data/pgdata
+    - JAVA_TOOL_OPTIONS=-Xms128m -Xmx256m
+    restart: always # Bei einem Abstaurz soll die DB immer neu starten.
+    networks: # Netzwerk für die DB und dem Microservice
+    - kalendar_ms_db
+volumes: # Allgemeine Volumes für das Projekt
+  kalendar_db: {}
 networks:
-  network1:
+  kalendar_ms_db:
+    driver: bridge
