@@ -1,9 +1,8 @@
-FROM maven:3.5.4-jdk-11-slim
-WORKDIR /fae-team-2-kalendar
-COPY . /fae-team-2-kalendar/
-RUN mvn package
-
-WORKDIR /fae-team-2-kalendar/java-app
-RUN cp /fae-team-2-kalendar/target/*.jar ./app.jar
+#Basis Image
+FROM openjdk:12-jdk-alpine
+#Port Freigeben für Docker
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+#Kopieren des Artefakts auf den Container
+COPY target/fae-team-2-kalendar-0.0.1-SNAPSHOT.jar app.jar
+#Startpunkt für den Service festlegen
+ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","./app.jar"]
