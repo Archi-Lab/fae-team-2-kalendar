@@ -1,9 +1,10 @@
 # Kalendar
 
 Projekt bauen
-``
+```
 $ mvn install -DskipTests=true
-``
+```
+
 Docker Image bauen:
 ```
 docker-compose build
