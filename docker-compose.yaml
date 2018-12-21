@@ -7,7 +7,7 @@ services: #Angabe aller Services
     networks: # Netzwerk für die DB und dem Microservice
     - kalender_ms_db
     ports: # Ports des Service die an die Host-Maschine übertragen werden.
-    - 8080:8080
+    - 8082:8080
   # Spezifikation der Datenbank
   kalender_db: # Sample DB
     image: postgres:10.1 # Basis Image

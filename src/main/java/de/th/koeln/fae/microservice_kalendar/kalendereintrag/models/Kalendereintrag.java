@@ -1,5 +1,6 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Kalendereintrag {
     private Beschreibung beschreibung;
 
     @ManyToOne
+    @JsonBackReference
     private Kalender kalender;
 
     public Kalender getKalender() {
