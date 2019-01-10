@@ -14,6 +14,7 @@ public class Kalender {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "kalender_id")
     private List<Kalendereintrag> kalendereintragListe;
@@ -65,5 +66,13 @@ public class Kalender {
 
     public void setDvp(DVP dvp) {
         this.dvp = dvp;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

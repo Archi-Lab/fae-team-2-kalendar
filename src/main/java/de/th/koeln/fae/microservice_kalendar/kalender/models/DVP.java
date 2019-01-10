@@ -11,7 +11,7 @@ public class DVP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     @OneToMany
     @JoinColumn(name = "dvp_id")
@@ -23,5 +23,13 @@ public class DVP {
 
     public void setKalender(List<Kalender> kalender) {
         this.kalender = kalender;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
