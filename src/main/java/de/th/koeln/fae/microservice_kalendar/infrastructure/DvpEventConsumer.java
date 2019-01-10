@@ -8,10 +8,12 @@ import org.springframework.dao.TransientDataAccessException;
 import org.springframework.dao.UncategorizedDataAccessException;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.CannotCreateTransactionException;
 
 import javax.inject.Inject;
 
+@Component
 public class DvpEventConsumer extends AbstractKafkaConsumer {
 
     @Inject

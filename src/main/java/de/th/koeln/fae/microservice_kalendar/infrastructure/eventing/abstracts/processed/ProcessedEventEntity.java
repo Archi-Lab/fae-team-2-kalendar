@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = {"key", "version", "topic"})})
 public class ProcessedEventEntity {
 
+    public ProcessedEventEntity(){}
+
     public ProcessedEventEntity(String key, String topic, Long version) {
         this.key = key;
         this.topic = topic;
