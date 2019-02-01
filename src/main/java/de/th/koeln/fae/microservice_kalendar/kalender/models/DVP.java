@@ -2,6 +2,7 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class DVP {
@@ -10,8 +11,9 @@ public class DVP {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id = UUID.randomUUID();
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
     @OneToMany
     @JoinColumn(name = "dvp_id")

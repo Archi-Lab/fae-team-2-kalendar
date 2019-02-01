@@ -5,13 +5,15 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class Kalendereintrag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private UUID id = UUID.randomUUID();
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
 
     @Embedded
     private Datum datum;

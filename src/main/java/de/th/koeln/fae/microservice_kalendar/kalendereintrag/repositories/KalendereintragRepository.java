@@ -5,10 +5,16 @@ import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereint
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-//@RepositoryRestResource(path = "ke")
-public interface KalendereintragRepository extends CrudRepository<Kalendereintrag, Long> {
+import java.util.Optional;
+import java.util.UUID;
 
-    Iterable<Kalendereintrag> findAllById(Long id);
-    Iterable<Kalendereintrag> findAllByKalender_Id(Long kalender_Id);
-    Iterable<Kalendereintrag> findAllByKalender_IdAndId(Long kalender_Id, Long id);            
+//@RepositoryRestResource(path = "ke")
+public interface KalendereintragRepository extends CrudRepository<Kalendereintrag, UUID> {
+
+    Iterable<Kalendereintrag> findAllById(UUID id);
+    Iterable<Kalendereintrag> findAllByKalender_Id(UUID kalender_Id);
+    Iterable<Kalendereintrag> findAllByKalender_IdAndId(UUID kalender_Id, UUID id);
+    Optional<Kalendereintrag> findKalendereintragByKalender_IdAndId(UUID kalender_Id, UUID id);
+
+    void deleteByKalender_IdAndId(UUID kalender_id, UUID id);
 }
