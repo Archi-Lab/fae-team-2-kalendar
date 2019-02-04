@@ -1,11 +1,13 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
+import org.springframework.hateoas.Identifiable;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class DVP {
+public class DVP implements Identifiable<UUID> {
 
     public DVP() {
     }

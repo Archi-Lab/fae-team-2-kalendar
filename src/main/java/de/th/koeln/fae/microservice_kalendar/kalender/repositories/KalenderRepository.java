@@ -1,6 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.repositories;
 
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
+import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -15,3 +16,4 @@ public interface KalenderRepository extends CrudRepository<Kalender, UUID> {
     Optional<Kalender> findById(UUID id);
     void deleteById(UUID id);
 }
+

@@ -2,13 +2,13 @@ package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
+import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Kalendereintrag {
+public class Kalendereintrag implements Identifiable<UUID> {
 
     @Id
     private UUID id = UUID.randomUUID();
