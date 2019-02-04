@@ -51,6 +51,11 @@ public class KalenderController {
         Resource<Kalender> resource = new Resource<>(kalender.get());
 
         resource.add(linkTo(methodOn(KalenderController.class).getKalender(kalenderId)).withSelfRel());
+        for (final Kalendereintrag kalendereintrag : kalender.get().getKalendereintragListe()) {
+            resource.add(linkTo(methodOn(KalendereintragController.class).getKalendereintrag(kalender.get().getId(),
+                                kalendereintrag.getId()))
+                        .withRel(kalendereintrag.getId().toString()));
+        }
 
         LOGGER.info("RETURN SPECIFIC KALENDER!");
         return  ResponseEntity.ok(resource);
@@ -58,6 +63,7 @@ public class KalenderController {
 
     @PutMapping("/k/{kalenderId}")
     public ResponseEntity<?> putKalender(@PathVariable("kalenderId") final UUID kalenderId,
+
                                          @RequestBody Kalender newKalender) {
         Optional<Kalender> oldKalender = this.kalenderRepository.findById(kalenderId);
 
