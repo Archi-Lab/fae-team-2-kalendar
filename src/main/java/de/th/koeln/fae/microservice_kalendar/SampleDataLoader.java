@@ -35,25 +35,8 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
         final Kalender kalender = new Kalender();
-        final Kalendereintrag kalendereintrag = new Kalendereintrag();
         final DVP dvp = new DVP();
-
-        List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
-        kalendereintragListe.add(kalendereintrag);
-
-        List<Kalender> kalenderList = new ArrayList<Kalender>();
-        kalenderList.add(kalender);
-
-        //fülle Kalender
-        Name name = new Name("Artztermine");
-        Zeitzone zeitzone = new Zeitzone(TimeZone.getTimeZone("CET"));
-
-        kalender.setName(name);
-        kalender.setZeitzone(zeitzone);
-        kalender.setKalendereintragListe(kalendereintragListe);
-
-        kalender.setDvp(dvp);
-        //dvp.setKalender(kalenderList);
+        final Kalendereintrag kalendereintrag = new Kalendereintrag();
 
         //fülle Kalendereintrag
         Beschreibung beschreibung = new Beschreibung("Ein neues Gebiss wird benötigt.");
@@ -66,6 +49,19 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalendereintrag.setAdresse(adresse);
         kalendereintrag.setTitel(titel);
         kalendereintrag.setKalender(kalender);
+
+        List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
+        kalendereintragListe.add(kalendereintrag);
+
+        //fülle Kalender
+        Name name = new Name("Artztermine");
+        Zeitzone zeitzone = new Zeitzone(TimeZone.getTimeZone("CET"));
+
+        kalender.setName(name);
+        kalender.setZeitzone(zeitzone);
+        kalender.setKalendereintragListe(kalendereintragListe);
+
+        kalender.setDvp(dvp);
 
         //speichere Kalender und Kalendereintrag
         final DVP savedDVP = this.dvpRepository.save(dvp);
