@@ -1,12 +1,11 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.models;
-
-import java.util.UUID;
-
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import java.util.UUID;
 
 @MappedSuperclass
 public class EntityUUID4 {
@@ -22,8 +21,8 @@ public class EntityUUID4 {
         this.id = UUID.randomUUID();
     }
 
-    public String getId() {
-        return this.id.toString();
+    public UUID getId() {
+        return id;
     }
 
     public void setId(final UUID id) {

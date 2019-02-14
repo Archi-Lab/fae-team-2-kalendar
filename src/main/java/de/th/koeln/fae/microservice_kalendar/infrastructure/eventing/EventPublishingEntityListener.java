@@ -1,6 +1,6 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing;
 
-import de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing.internal.EventPublishingEntityListenerAdapter;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal.EventPublishingEntityListenerAdapter;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;

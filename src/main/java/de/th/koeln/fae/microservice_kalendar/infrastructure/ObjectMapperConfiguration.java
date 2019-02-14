@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure;
+package de.th.koeln.fae.microservice_kalendar.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

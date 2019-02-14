@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

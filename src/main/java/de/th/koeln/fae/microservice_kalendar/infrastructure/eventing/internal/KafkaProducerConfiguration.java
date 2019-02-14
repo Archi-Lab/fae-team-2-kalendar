@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

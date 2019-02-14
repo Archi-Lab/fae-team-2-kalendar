@@ -1,19 +1,15 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.EntityUUID4;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
-import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
-public class Kalendereintrag implements Identifiable<UUID> {
-
-    @Id
-    private UUID id = UUID.randomUUID();
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Kalendereintrag extends EntityUUID4 {
 
     @Embedded
     private Datum datum;

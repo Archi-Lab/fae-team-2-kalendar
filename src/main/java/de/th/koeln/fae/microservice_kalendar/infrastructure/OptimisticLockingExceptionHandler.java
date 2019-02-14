@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure;
+package de.th.koeln.fae.microservice_kalendar.infrastructure;
 
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ public class OptimisticLockingExceptionHandler {
 
     @ExceptionHandler(OptimisticLockingFailureException.class)
     public ResponseEntity<Object> handleConflict(final OptimisticLockingFailureException exception,
-        final WebRequest request) {
+                                                 final WebRequest request) {
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 }

@@ -1,5 +1,8 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventPublishingEntityListener;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventSource;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 
 import javax.persistence.*;
@@ -7,12 +10,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Kalender {
+@EntityListeners(EventPublishingEntityListener.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Kalender extends EntityUUID4 implements EventSource{
 
-    @Id
-    private UUID id = UUID.randomUUID();
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
+    @Version
+    private Long version;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "kalender_id")
@@ -26,14 +29,6 @@ public class Kalender {
 
     @Embedded
     private Zeitzone zeitzone;
-
-    @Override
-    public String toString() {
-        return "Kalender{" +
-                "name='" + name + '\'' +
-                ", zeitzone='" + zeitzone.toString() +
-                '}';
-    }
 
     public List<Kalendereintrag> getKalendereintragListe() {
         return kalendereintragListe;
@@ -65,5 +60,27 @@ public class Kalender {
 
     public void setDvp(DVP dvp) {
         this.dvp = dvp;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    @Override
+    public Long getVersion() {
+        return version;
+    }
+
+    @Override
+    public String getAggregateName() {
+        return "kalender";
+    }
+
+    @Override
+    public String toString() {
+        return "Kalender{" +
+                "name='" + name + '\'' +
+                ", zeitzone='" + zeitzone.toString() +
+                '}';
     }
 }

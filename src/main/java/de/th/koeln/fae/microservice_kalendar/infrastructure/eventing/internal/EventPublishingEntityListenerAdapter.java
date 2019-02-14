@@ -1,7 +1,7 @@
-package de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.th.koeln.fae.microservice_dementiell_veraenderter.infrastructure.eventing.EventSource;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -65,7 +65,7 @@ public class EventPublishingEntityListenerAdapter implements ApplicationContextA
         try {
             final DomainEvent result = new DomainEvent();
             result.setId(UUID.randomUUID().toString());
-            result.setKey(entity.getId());
+            result.setKey(entity.getId().toString());
             result.setTime(ZonedDateTime.now(ZoneOffset.UTC));
             result.setVersion(entity.getVersion() == null ? 0 : entity.getVersion());
             result.setEntityType(entity.getClass());
