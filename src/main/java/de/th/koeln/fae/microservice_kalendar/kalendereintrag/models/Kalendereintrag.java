@@ -1,14 +1,12 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.EntityUUID4;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 
 import javax.persistence.*;
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Kalendereintrag extends EntityUUID4 {
 
     @Embedded

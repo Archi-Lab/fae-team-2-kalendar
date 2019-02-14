@@ -1,5 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ public class DVP extends EntityUUID4 {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "dvp_id")
+    @JsonBackReference
     private List<Kalender> kalender;
 
     public List<Kalender> getKalender() {
