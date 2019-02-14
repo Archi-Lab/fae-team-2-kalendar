@@ -5,6 +5,7 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Name;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Zeitzone;
+import de.th.koeln.fae.microservice_kalendar.kalender.repositories.DVPRepository;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.KalenderRepository;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.*;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.repositories.KalendereintragRepository;
@@ -26,6 +27,9 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
     @Autowired
     private KalendereintragRepository kalendereintragRepository;
+
+    @Autowired
+    private DVPRepository dvpRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -49,7 +53,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalender.setKalendereintragListe(kalendereintragListe);
 
         kalender.setDvp(dvp);
-        dvp.setKalender(kalenderList);
+        //dvp.setKalender(kalenderList);
 
         //fülle Kalendereintrag
         Beschreibung beschreibung = new Beschreibung("Ein neues Gebiss wird benötigt.");
@@ -64,6 +68,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalendereintrag.setKalender(kalender);
 
         //speichere Kalender und Kalendereintrag
+        final DVP savedDVP = this.dvpRepository.save(dvp);
         final Kalender savedKalender = this.kalenderRepository.save(kalender);
         final Kalendereintrag savedKalendereintrag = this.kalendereintragRepository.save(kalendereintrag);
 

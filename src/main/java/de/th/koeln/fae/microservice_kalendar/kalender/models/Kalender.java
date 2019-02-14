@@ -1,5 +1,6 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventPublishingEntityListener;
 import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventSource;
@@ -21,7 +22,8 @@ public class Kalender extends EntityUUID4 implements EventSource{
     @JoinColumn(name = "kalender_id")
     private List<Kalendereintrag> kalendereintragListe;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonBackReference
     private DVP dvp;
 
     @Embedded

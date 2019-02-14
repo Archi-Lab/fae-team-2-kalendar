@@ -12,7 +12,7 @@ public class DVP extends EntityUUID4 {
     public DVP() {
     }
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "dvp_id")
     private List<Kalender> kalender;
 
