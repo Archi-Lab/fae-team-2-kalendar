@@ -8,7 +8,7 @@ services: #Angabe aller Services
     - kalender_ms_db
     - fae-message-broker_backend
     ports: # Ports des Service die an die Host-Maschine übertragen werden.
-    - 8080:8080
+    - 8022
   # Spezifikation der Datenbank
   kalender_db: # Sample DB
     image: postgres:10.1 # Basis Image
