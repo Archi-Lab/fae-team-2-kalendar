@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.internal;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

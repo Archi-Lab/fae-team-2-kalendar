@@ -1,7 +1,6 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.internal;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

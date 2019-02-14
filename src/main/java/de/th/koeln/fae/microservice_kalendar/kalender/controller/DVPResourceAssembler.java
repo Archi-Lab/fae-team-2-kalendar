@@ -1,6 +1,6 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.controller;
 
-import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 

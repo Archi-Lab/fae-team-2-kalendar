@@ -1,7 +1,7 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.internal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventSource;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.EventSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

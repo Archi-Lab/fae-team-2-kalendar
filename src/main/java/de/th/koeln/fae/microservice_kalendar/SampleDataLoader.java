@@ -1,7 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar;
 
 
-import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Name;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Zeitzone;

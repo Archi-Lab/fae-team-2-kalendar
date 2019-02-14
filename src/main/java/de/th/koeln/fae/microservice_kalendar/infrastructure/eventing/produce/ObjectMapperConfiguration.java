@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

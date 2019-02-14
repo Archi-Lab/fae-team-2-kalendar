@@ -1,6 +1,6 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce;
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.internal.EventPublishingEntityListenerAdapter;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.internal.EventPublishingEntityListenerAdapter;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;

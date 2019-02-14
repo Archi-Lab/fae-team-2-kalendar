@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

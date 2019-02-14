@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce;
 
 import java.util.UUID;
 

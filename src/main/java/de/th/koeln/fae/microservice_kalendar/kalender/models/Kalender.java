@@ -2,8 +2,9 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventPublishingEntityListener;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.EventSource;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.EventPublishingEntityListener;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.EventSource;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 
 import javax.persistence.*;
