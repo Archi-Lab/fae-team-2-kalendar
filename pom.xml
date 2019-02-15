@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.th.koeln.fae</groupId>
-    <artifactId>fae-team-2-kalendar</artifactId>
+    <artifactId>microservice_kalendar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>microservice_kalendar</name>
-    <description></description>
+    <description>Microservice Kalender</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
