@@ -2,6 +2,8 @@ package de.th.koeln.fae.microservice_kalendar;
 
 
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.Nachname;
+import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.Vorname;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Name;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Zeitzone;
@@ -36,6 +38,9 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         final Kalender kalender = new Kalender();
         final DVP dvp = new DVP();
+        dvp.setVorname(new Vorname("Max"));
+        dvp.setNachname(new Nachname("Mustermann"));
+
         final Kalendereintrag kalendereintrag = new Kalendereintrag();
 
         //fülle Kalendereintrag

@@ -24,7 +24,8 @@ public class DVP extends EntityUUID4 {
     @Embedded
     private Vorname vorname;
 
-    @Embedded Nachname nachname;
+    @Embedded
+    private Nachname nachname;
 
     public List<Kalender> getKalender() {
         return kalender;
