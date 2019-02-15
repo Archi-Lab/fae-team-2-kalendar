@@ -36,12 +36,13 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-        final Kalender kalender = new Kalender();
+        // lege dvp an
         final DVP dvp = new DVP();
         dvp.setVorname(new Vorname("Max"));
         dvp.setNachname(new Nachname("Mustermann"));
         final DVP savedDVP = this.dvpRepository.save(dvp);
 
+        final Kalender kalender = new Kalender();
         final Kalendereintrag kalendereintrag = new Kalendereintrag();
 
         //fülle Kalendereintrag
@@ -55,7 +56,6 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalendereintrag.setAdresse(adresse);
         kalendereintrag.setTitel(titel);
         kalendereintrag.setKalender(kalender);
-//        final Kalendereintrag savedKalendereintrag = this.kalendereintragRepository.save(kalendereintrag);
 
         List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
         kalendereintragListe.add(kalendereintrag);
