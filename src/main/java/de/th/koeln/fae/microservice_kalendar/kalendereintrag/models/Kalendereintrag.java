@@ -6,7 +6,7 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 
 import javax.persistence.*;
 
-/*
+/**
 Kalendereintrag Entität, die einen Termin in einem Kalender darstellt.
 Ein Kalendereintrag kann nur zu einem Kalender gehören und erhält dadurch die entsprechende Zuordnung zu einer DVP.
  */

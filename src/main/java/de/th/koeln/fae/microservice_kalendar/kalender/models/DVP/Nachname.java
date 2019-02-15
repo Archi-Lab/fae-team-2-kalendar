@@ -2,7 +2,7 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
 
 import javax.persistence.Embeddable;
 
-/*
+/**
 Attribut Nachname der DVP Entität. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable

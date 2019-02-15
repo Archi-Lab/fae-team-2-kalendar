@@ -7,7 +7,7 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import javax.persistence.*;
 import java.util.List;
 
-/*
+/**
 DVP Entität, die für die Zuordnung von Kalender zu DVP gehalten wird.
 Repliziert Teilelemente des DVP MS, um entsprechende Informationen aus dem DVP-Topic zu erhalten
 und in diesem MS zu verwenden.

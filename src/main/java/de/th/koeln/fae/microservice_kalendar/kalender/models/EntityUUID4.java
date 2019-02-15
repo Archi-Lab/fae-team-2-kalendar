@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.UUID;
 
-/*
+/**
 Um einer Klasse eine UUID hinzuzufügen, muss diese mit EntityUUID4 extended werden.
 Macht die Verwendung von UUIDs explizit.
  */

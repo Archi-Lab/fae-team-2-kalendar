@@ -10,11 +10,11 @@ import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereint
 import javax.persistence.*;
 import java.util.List;
 
-/*
+/**
 Aggregate-Root des Kalender MS
  */
 @Entity
-/*
+/**
 EventPublishingEntityListener.class ist eine generische REWE-Digital Klasse zum erfassen von "created",
 "updated" und "deleted" Events.
 Triggert das publishen des Kalenders bei einem der oben genannten Aktionen.

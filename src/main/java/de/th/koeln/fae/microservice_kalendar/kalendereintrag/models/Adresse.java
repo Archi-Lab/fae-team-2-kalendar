@@ -2,7 +2,7 @@ package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
 import javax.persistence.Embeddable;
 
-/*
+/**
 Attribut Adresse der Kalendereintrag Entität. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable

@@ -3,7 +3,7 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models;
 import javax.persistence.Embeddable;
 import java.util.TimeZone;
 
-/*
+/**
 Attribut Zeitzone der Kalender Entität. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable
