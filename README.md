@@ -2,6 +2,12 @@
 
 Dies ist der Kalender des Systems _GPS-Schuhsohle_. Hier werden Kalender mit Zuordnung zu einer DVP verwaltet, die aus ein oder mehreren Kalendereinträgen bestehen können. Weitere Informationen zu Details, wie der _REST-API_ dem _Eventing_ und dem allgemeinen _Aufbau_ befinden sich im [Wiki](https://github.com/Archi-Lab/fae-team-2-kalendar/wiki).
 
+
+## Prerequisites
+
+* [Maven](https://maven.apache.org/install.html)
+* [Docker](https://www.docker.com/)
+
 ## Getting Started
 
 Mit den folgenden Schritten kann das Projekt aus dem Projektordner ausgeführt werden:
