@@ -40,6 +40,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         final DVP dvp = new DVP();
         dvp.setVorname(new Vorname("Max"));
         dvp.setNachname(new Nachname("Mustermann"));
+        final DVP savedDVP = this.dvpRepository.save(dvp);
 
         final Kalendereintrag kalendereintrag = new Kalendereintrag();
 
@@ -54,6 +55,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalendereintrag.setAdresse(adresse);
         kalendereintrag.setTitel(titel);
         kalendereintrag.setKalender(kalender);
+//        final Kalendereintrag savedKalendereintrag = this.kalendereintragRepository.save(kalendereintrag);
 
         List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
         kalendereintragListe.add(kalendereintrag);
@@ -69,9 +71,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalender.setDvp(dvp);
 
         //speichere Kalender und Kalendereintrag
-        final DVP savedDVP = this.dvpRepository.save(dvp);
         final Kalender savedKalender = this.kalenderRepository.save(kalender);
-        final Kalendereintrag savedKalendereintrag = this.kalendereintragRepository.save(kalendereintrag);
 
     }
 }

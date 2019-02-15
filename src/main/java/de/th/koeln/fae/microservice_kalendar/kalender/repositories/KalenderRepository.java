@@ -13,7 +13,7 @@ import java.util.UUID;
 @RepositoryRestResource(path = "k")
 public interface KalenderRepository extends CrudRepository<Kalender, UUID> {
 
-    Optional<Kalender> findById(UUID id);
-    void deleteById(UUID id);
+   // Optional<Kalender> findById(UUID id);
+   // void deleteById(UUID id);
 }
 
