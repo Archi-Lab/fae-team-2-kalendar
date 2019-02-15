@@ -1,21 +1,25 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.EntityUUID4;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
-import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
+/*
+DVP Entität, die für die Zuordnung von Kalender zu DVP gehalten wird.
+Repliziert Teilelemente des DVP MS, um entsprechende Informationen aus dem DVP-Topic zu erhalten
+und in diesem MS zu verwenden.
+ */
 @Entity
 public class DVP extends EntityUUID4 {
 
     public DVP() {
     }
 
+    //region Attribute
+    //Darstellung der 1:N-Beziehung zwischen dem Kalender(1) und der/den DVPs(N)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "dvp_id")
     @JsonBackReference
@@ -26,7 +30,9 @@ public class DVP extends EntityUUID4 {
 
     @Embedded
     private Nachname nachname;
+    //endregion
 
+    //region Getter,Setter
     public List<Kalender> getKalender() {
         return kalender;
     }
@@ -50,4 +56,5 @@ public class DVP extends EntityUUID4 {
     public void setNachname(Nachname nachname) {
         this.nachname = nachname;
     }
+    //endregion
 }

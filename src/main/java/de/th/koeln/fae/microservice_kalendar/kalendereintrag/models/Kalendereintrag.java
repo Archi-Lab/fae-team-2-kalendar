@@ -6,9 +6,14 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 
 import javax.persistence.*;
 
+/*
+Kalendereintrag Entität, die einen Termin in einem Kalender darstellt.
+Ein Kalendereintrag kann nur zu einem Kalender gehören und erhält dadurch die entsprechende Zuordnung zu einer DVP.
+ */
 @Entity
 public class Kalendereintrag extends EntityUUID4 {
 
+    //region Attribute
     @Embedded
     private Datum datum;
 
@@ -21,9 +26,11 @@ public class Kalendereintrag extends EntityUUID4 {
     @Embedded
     private Beschreibung beschreibung;
 
+    //Darstellung der N:1-Beziehung zwischen Kalendereinträgen(N) und dem Kalender(1)
     @ManyToOne
     @JsonBackReference
     private Kalender kalender;
+    //endregion
 
     public Kalender getKalender() {
         return kalender;

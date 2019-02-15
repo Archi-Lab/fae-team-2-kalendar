@@ -34,3 +34,4 @@ docker-compose up --scale kalender=2
 
 ## Acknowledgements
 * Der Eventing Code wurde von [REWE Digital](https://github.com/rewe-digital/integration-patterns) übernommen. 
+* Die EntityUUID4 Klasse wurde von [Team 4](https://github.com/Archi-Lab/fae-team-4) übernommen. 
