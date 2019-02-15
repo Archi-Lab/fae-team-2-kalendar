@@ -1,6 +1,7 @@
 version: '3'
-services: #Angabe aller Services
-  kalender: # Kalender service
+services:
+# Spezifikation der Services
+  kalender:
     build: . # Der Service basiert auf einem Dockerfile in dem directory "."
     depends_on: # Der Service wartet auf den Start der DB.
     - kalender_db
@@ -10,7 +11,7 @@ services: #Angabe aller Services
     ports: # Ports des Service die an die Host-Maschine übertragen werden.
     - 8022
   # Spezifikation der Datenbank
-  kalender_db: # Kalender DB
+  kalender_db:
     image: postgres:10.1 # Verwendung eines Postgres image
     volumes:
     - kalender_db:/var/lib/postgresql/data # Volume um Daten persistent zu speichern.

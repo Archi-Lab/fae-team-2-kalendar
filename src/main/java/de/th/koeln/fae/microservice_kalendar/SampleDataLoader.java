@@ -21,7 +21,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
-/*
+/**
 Wird verwendet, um Beispieldaten zu erzeugen und in der Datenbank zu speichern.
  */
 @Component

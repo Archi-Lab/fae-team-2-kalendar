@@ -4,7 +4,8 @@ import javax.persistence.Embeddable;
 import java.util.Calendar;
 
 /**
-Attribut Datum der Kalendereintrag Entität. Wird durch diese Klasse explizit gemacht.
+Attribut Datum der Kalendereintrag Entität sowie Value-Object im Kalendereintrag-Aggregat.
+Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable
 public class Datum {

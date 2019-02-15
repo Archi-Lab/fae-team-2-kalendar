@@ -3,7 +3,7 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models.DVP;
 import javax.persistence.Embeddable;
 
 /**
-Attribut Vorname der DVP Entität. Wird durch diese Klasse explizit gemacht.
+Attribut Vorname der DVP Entität sowie Value-Object im Kalender-Aggregat. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable
 public class Vorname {

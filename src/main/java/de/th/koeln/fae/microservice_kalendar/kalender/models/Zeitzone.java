@@ -4,7 +4,7 @@ import javax.persistence.Embeddable;
 import java.util.TimeZone;
 
 /**
-Attribut Zeitzone der Kalender Entität. Wird durch diese Klasse explizit gemacht.
+Attribut Zeitzone der Kalender Entität sowie Value-Object im Kalender-Aggregat. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable
 public class Zeitzone {

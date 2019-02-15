@@ -3,7 +3,7 @@ package de.th.koeln.fae.microservice_kalendar.kalender.models;
 import javax.persistence.Embeddable;
 
 /**
-Attribut Name der Kalender Entität. Wird durch diese Klasse explizit gemacht.
+Attribut Name der Kalender Entität sowie Value-Object im Kalender-Aggregat. Wird durch diese Klasse explizit gemacht.
  */
 @Embeddable
 public class Name {
