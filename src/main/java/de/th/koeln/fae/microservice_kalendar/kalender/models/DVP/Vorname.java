@@ -26,6 +26,16 @@ public class Vorname {
     }
     //endregion
 
+    //region Getter,Setter
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+    //endregion
+
     //region Override-Methoden
     @Override
     public String toString() {

@@ -9,11 +9,6 @@ import javax.imageio.stream.IIOByteBuffer;
 import java.util.Optional;
 import java.util.UUID;
 
-
 @RepositoryRestResource(path = "k")
-public interface KalenderRepository extends CrudRepository<Kalender, UUID> {
-
-   // Optional<Kalender> findById(UUID id);
-   // void deleteById(UUID id);
-}
+public interface KalenderRepository extends CrudRepository<Kalender, UUID> {}
 

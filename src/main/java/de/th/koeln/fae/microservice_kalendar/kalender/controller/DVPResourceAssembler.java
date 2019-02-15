@@ -1,7 +1,6 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.controller;
 
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 public class DVPResourceAssembler extends ResourceAssemblerSupport<DVP, DVPResource> {
@@ -13,8 +12,11 @@ public class DVPResourceAssembler extends ResourceAssemblerSupport<DVP, DVPResou
     @Override
     public DVPResource toResource(DVP dvp) {
         DVPResource resource = instantiateResource(dvp);
-        //TODO: how to create links over ms bounds
-        resource.add(new Link("/dvps/{dvpId}").expand(dvp.getId()));
+
+        resource.id = dvp.getId();
+        resource.vorname = dvp.getVorname();
+        resource.nachname = dvp.getNachname();
+
         return resource;
     }
 }

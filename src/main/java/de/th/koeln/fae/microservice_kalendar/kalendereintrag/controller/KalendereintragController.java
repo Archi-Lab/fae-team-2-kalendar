@@ -26,42 +26,12 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class KalendereintragController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KalenderController.class);
-    private final KalendereintragRepository kalendereintragRepository;
-    private final KalenderRepository kalenderRepository;
 
     @Autowired
-    public KalendereintragController(KalendereintragRepository kalendereintragRepository, 
-                                     KalenderRepository kalenderRepository){
-        this.kalendereintragRepository = kalendereintragRepository;
-        this.kalenderRepository = kalenderRepository;
-    }
+    private KalendereintragRepository kalendereintragRepository;
 
-
-    @PostMapping("/k/{kalenderId}/ke")
-    public ResponseEntity<?> postKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
-                                                               @RequestBody Kalendereintrag newKalendereintrag){
-
-        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-
-        if(kalender.isEmpty()) {
-            LOGGER.error("Kalender " + kalenderId + " not found");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Kalender " + kalenderId + "doesn't exist");
-        }
-            
-        newKalendereintrag.setKalender(kalender.get());
-//        kalender.get().getKalendereintragListe().add(newKalendereintrag);
-//
-//        LOGGER.info("Trying to save");
-//        LOGGER.info("Kalender" + kalender.get().toString() + " listen Laenge: " + kalender.get().getKalendereintragListe().size());
-//
-//        kalenderRepository.save(kalender.get());
-        kalendereintragRepository.save(newKalendereintrag);
-        LOGGER.info("Successfully created Kalendereintrag with id: " + newKalendereintrag.getId());
-
-        return new ResponseEntity<>(newKalendereintrag, HttpStatus.CREATED);
-    }
-
+    @Autowired
+    private KalenderRepository kalenderRepository;
 
     @GetMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> getKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
@@ -77,6 +47,28 @@ public class KalendereintragController {
         return  ResponseEntity.ok(resource);
     }
 
+    @PostMapping("/k/{kalenderId}/ke")
+    public ResponseEntity<?> postKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
+                                                               @RequestBody Kalendereintrag newKalendereintrag){
+
+        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
+
+        if(kalender.isEmpty()) {
+            LOGGER.error("Kalender " + kalenderId + " not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Kalender " + kalenderId + "doesn't exist");
+        }
+
+        newKalendereintrag.setKalender(kalender.get());
+
+        kalendereintragRepository.save(newKalendereintrag);
+        LOGGER.info("Successfully created Kalendereintrag with id: " + newKalendereintrag.getId());
+
+        Resource<Kalendereintrag> resource = new Resource<>(newKalendereintrag);
+        resource.add(linkTo(methodOn(KalendereintragController.class).getKalendereintrag(kalenderId, newKalendereintrag.getId())).withSelfRel());
+
+        return new ResponseEntity<>(resource, HttpStatus.CREATED);
+    }
 
     @PutMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> putKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
@@ -84,7 +76,7 @@ public class KalendereintragController {
                                                 @RequestBody Kalendereintrag newKalendereintrag) {
         final Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
 
-        if(kalender.isEmpty()) {
+        if (kalender.isEmpty()) {
             LOGGER.error("Kalender " + kalenderId + " not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -96,7 +88,7 @@ public class KalendereintragController {
         if(oldKalendereintrag.isPresent()){
             newKalendereintrag.setId(oldKalendereintrag.get().getId());
             kalendereintragRepository.save(newKalendereintrag);
-            Resource<Kalendereintrag> resources = new Resource<>(oldKalendereintrag.get());
+            Resource<Kalendereintrag> resources = new Resource<>(newKalendereintrag);
 
             resources.add(linkTo(methodOn(KalendereintragController.class).putKalendereintrag(kalenderId, kalendereintragId, newKalendereintrag)).withSelfRel());
 

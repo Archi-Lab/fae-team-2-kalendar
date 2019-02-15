@@ -1,6 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar;
 
 
+import de.th.koeln.fae.microservice_kalendar.kalender.controller.KalenderController;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.Nachname;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.Vorname;
@@ -11,6 +12,8 @@ import de.th.koeln.fae.microservice_kalendar.kalender.repositories.DVPRepository
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.KalenderRepository;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.*;
 import de.th.koeln.fae.microservice_kalendar.kalendereintrag.repositories.KalendereintragRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -75,6 +78,5 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         //speichert Kalender und Kalendereintrag
         final Kalender savedKalender = this.kalenderRepository.save(kalender);
-
     }
 }

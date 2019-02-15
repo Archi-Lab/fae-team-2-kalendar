@@ -19,8 +19,8 @@ public class KalendereintragResourceAssembler extends ResourceAssemblerSupport<K
 
         KalendereintragResource resource = instantiateResource(kalendereintrag);
 
-        resource.datum = kalendereintrag.getDatum();
         resource.titel = kalendereintrag.getTitel();
+        resource.datum = kalendereintrag.getDatum();
 
         resource.add(linkTo(methodOn(KalendereintragController.class)
                             .getKalendereintrag(
