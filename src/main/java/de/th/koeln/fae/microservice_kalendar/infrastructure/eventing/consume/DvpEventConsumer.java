@@ -1,8 +1,8 @@
 package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.consume;
 
 import com.google.common.collect.ImmutableSet;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.AbstractKafkaConsumer;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.unprocessable.UnprocessableEventService;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.AbstractKafkaConsumer;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.unprocessable.UnprocessableEventService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.dao.TransientDataAccessException;
 import org.springframework.dao.UncategorizedDataAccessException;

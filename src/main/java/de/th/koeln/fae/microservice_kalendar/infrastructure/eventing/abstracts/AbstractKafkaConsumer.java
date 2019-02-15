@@ -1,9 +1,9 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.TemporaryKafkaProcessingError;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.unprocessable.UnprocessableEventService;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.unprocessable.UnprocessedEventEntity;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.TemporaryKafkaProcessingError;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.unprocessable.UnprocessableEventService;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.unprocessable.UnprocessedEventEntity;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

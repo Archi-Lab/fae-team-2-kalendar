@@ -1,7 +1,7 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception;
 
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.EventProcessingState;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.EventProcessingState;
 
 public class MessageProcessingException extends Exception {
 

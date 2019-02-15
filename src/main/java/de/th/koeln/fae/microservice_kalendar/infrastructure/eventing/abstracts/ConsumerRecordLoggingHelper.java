@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

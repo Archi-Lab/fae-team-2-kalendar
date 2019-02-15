@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration;
 
 public class SimpleConsumerTopicConfig implements ConsumerTopicConfig {
 

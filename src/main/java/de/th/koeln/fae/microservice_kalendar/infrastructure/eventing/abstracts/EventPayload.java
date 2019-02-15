@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

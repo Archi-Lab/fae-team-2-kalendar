@@ -1,7 +1,7 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration.ConsumerTopicConfig;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration.ConsumerTopicConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 public interface DomainEventProcessor {

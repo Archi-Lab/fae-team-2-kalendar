@@ -1,12 +1,12 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.MessageProcessingException;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.PermanentMessageProcessingException;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.TemporaryMessageProcessingException;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.UnexpectedMessageProcessingException;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.MessageProcessingException;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.PermanentMessageProcessingException;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.TemporaryMessageProcessingException;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.UnexpectedMessageProcessingException;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;

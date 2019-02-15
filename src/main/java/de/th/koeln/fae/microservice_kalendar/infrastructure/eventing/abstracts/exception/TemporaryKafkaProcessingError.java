@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception;
 
 public class TemporaryKafkaProcessingError extends RuntimeException {
 

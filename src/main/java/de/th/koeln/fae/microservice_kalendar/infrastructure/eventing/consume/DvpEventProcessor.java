@@ -1,10 +1,10 @@
 package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.consume;
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.AbstractDomainEventProcessor;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.EventParser;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.EventProcessingState;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration.ConsumerTopicConfig;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.processed.ProcessedEventService;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.AbstractDomainEventProcessor;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.EventParser;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.EventProcessingState;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration.ConsumerTopicConfig;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.processed.ProcessedEventService;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.DVPRepository;
 import org.slf4j.Logger;

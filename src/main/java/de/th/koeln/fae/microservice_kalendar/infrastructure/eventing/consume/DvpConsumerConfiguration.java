@@ -1,7 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.consume;
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration.ConsumerTopicConfig;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration.SimpleConsumerTopicConfig;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration.ConsumerTopicConfig;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration.SimpleConsumerTopicConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

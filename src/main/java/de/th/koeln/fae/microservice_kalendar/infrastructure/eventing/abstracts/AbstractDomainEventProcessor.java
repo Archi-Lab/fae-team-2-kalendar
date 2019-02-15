@@ -1,8 +1,8 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts;
 
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.configuration.ConsumerTopicConfig;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.exception.MessageProcessingException;
-import de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.processed.ProcessedEventService;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.configuration.ConsumerTopicConfig;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.exception.MessageProcessingException;
+import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.processed.ProcessedEventService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

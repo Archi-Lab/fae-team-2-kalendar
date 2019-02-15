@@ -1,4 +1,4 @@
-package de.th.koeln.fae.microservice_kalendar.infrastructure.abstracts.unprocessable;
+package de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.abstracts.unprocessable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
