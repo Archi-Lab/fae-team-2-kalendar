@@ -32,6 +32,7 @@ public class Kalendereintrag extends EntityUUID4 {
     private Kalender kalender;
     //endregion
 
+    //region Getter,Setter
     public Kalender getKalender() {
         return kalender;
     }
@@ -71,4 +72,5 @@ public class Kalendereintrag extends EntityUUID4 {
     public void setBeschreibung(Beschreibung beschreibung) {
         this.beschreibung = beschreibung;
     }
+    //endregion
 }

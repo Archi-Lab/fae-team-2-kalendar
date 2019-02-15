@@ -21,6 +21,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
+/*
+Wird verwendet, um Beispieldaten zu erzeugen und in der Datenbank zu speichern.
+ */
 @Component
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -36,7 +39,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-        // lege dvp an
+        // legt dvp an
         final DVP dvp = new DVP();
         dvp.setVorname(new Vorname("Max"));
         dvp.setNachname(new Nachname("Mustermann"));
@@ -45,7 +48,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         final Kalender kalender = new Kalender();
         final Kalendereintrag kalendereintrag = new Kalendereintrag();
 
-        //fülle Kalendereintrag
+        //füllt Kalendereintrag
         Beschreibung beschreibung = new Beschreibung("Ein neues Gebiss wird benötigt.");
         Datum datum = new Datum(new GregorianCalendar(2019,02,10, 10, 20));
         Adresse adresse = new Adresse("Musterstrasse", "11", "Musterhausen", "51674");
@@ -60,7 +63,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
         kalendereintragListe.add(kalendereintrag);
 
-        //fülle Kalender
+        //füllt Kalender
         Name name = new Name("Artztermine");
         Zeitzone zeitzone = new Zeitzone(TimeZone.getTimeZone("CET"));
 
@@ -70,7 +73,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         kalender.setDvp(dvp);
 
-        //speichere Kalender und Kalendereintrag
+        //speichert Kalender und Kalendereintrag
         final Kalender savedKalender = this.kalenderRepository.save(kalender);
 
     }

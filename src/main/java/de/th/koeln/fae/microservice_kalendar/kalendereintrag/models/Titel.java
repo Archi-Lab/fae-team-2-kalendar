@@ -1,15 +1,16 @@
 package de.th.koeln.fae.microservice_kalendar.kalendereintrag.models;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Embeddable;
 
+/*
+Attribut Titel der Kalendereintrag Entität. Wird durch diese Klasse explizit gemacht.
+ */
 @Embeddable
 public class Titel {
 
     private String titel;
 
+    //region Konstruktoren
     public Titel(){
 
     }
@@ -18,7 +19,9 @@ public class Titel {
 
         this.titel = titel;
     }
+    //endregion
 
+    //region Getter,Setter
     public String getTitel() {
         return titel;
     }
@@ -26,4 +29,5 @@ public class Titel {
     public void setTitel(String titel) {
         this.titel = titel;
     }
+    //endregion
 }

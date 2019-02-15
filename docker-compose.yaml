@@ -1,27 +1,27 @@
 version: '3'
 services: #Angabe aller Services
-  kalender: # Sample Microservice
-    build: . # Der Service basiert auf einer Dockerfile in dem directory "."
+  kalender: # Kalender service
+    build: . # Der Service basiert auf einem Dockerfile in dem directory "."
     depends_on: # Der Service wartet auf den Start der DB.
     - kalender_db
-    networks: # Netzwerk für die DB und dem Microservice
+    networks: # Neztwerk für DB und MS sowie für den Message-Broker
     - kalender_ms_db
     - fae-message-broker_backend
     ports: # Ports des Service die an die Host-Maschine übertragen werden.
     - 8022
   # Spezifikation der Datenbank
-  kalender_db: # Sample DB
-    image: postgres:10.1 # Basis Image
+  kalender_db: # Kalender DB
+    image: postgres:10.1 # Verwendung eines Postgres image
     volumes:
-    - kalender_db:/var/lib/postgresql/data # Volume um Daten persistent zu speichern. Alle Daten aus dem Pfad (rechts) werden in das Volume abgelegt.
-    environment: # Konfiguration über env-Variablen
+    - kalender_db:/var/lib/postgresql/data # Volume um Daten persistent zu speichern.
+    environment: # Konfiguration der Datenbank über env-Variablen
     - POSTGRES_PASSWORD=_kalenderService_2018
     - POSTGRES_USER=kalenderService
     - POSTGRES_DB=kalenderService
     - PGDATA=/var/lib/postgresql/data/pgdata
     - JAVA_TOOL_OPTIONS=-Xms128m -Xmx256m
     restart: always # Bei einem Abstaurz soll die DB immer neu starten.
-    networks: # Netzwerk für die DB und dem Microservice
+    networks: # Netzwerk für die DB und den MS
     - kalender_ms_db
 volumes: # Allgemeine Volumes für das Projekt
   kalender_db: {}
