@@ -16,7 +16,7 @@ import java.util.List;
 public class Kalender extends EntityUUID4 implements EventSource{
 
     @Version
-    private Long version;
+    private Long version = 0L;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "kalender_id")

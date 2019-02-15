@@ -47,6 +47,8 @@ public class DvpEventProcessor extends AbstractDomainEventProcessor<DvpPayload, 
         final DVP dvp = new DVP();
         UUID uid = UUID.fromString(dvpEvent.getPayload().getId());
         dvp.setId(uid);
+        dvp.setVorname(dvpEvent.getPayload().getVorname());
+        dvp.setNachname(dvpEvent.getPayload().getNachname());
         return dvp;
     }
 
