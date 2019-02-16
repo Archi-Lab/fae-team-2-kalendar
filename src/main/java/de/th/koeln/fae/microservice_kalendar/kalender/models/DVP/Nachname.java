@@ -18,7 +18,7 @@ public class Nachname {
     public Nachname(String nachname){
 
         //Verwendung eines Regex, um nur Nachnamen bestehend aus Groß- bzw. Kleinbuchstaben zu akzeptieren
-        String expression = "^[a-zA-Z\\s]+";
+        String expression = "(?U)[\\p{L}\\p{M}\\s'-]+";
         if(!nachname.matches(expression)){
             throw new IllegalArgumentException("Ein Nachname darf nur aus Groß- bzw. Kleinbuchstaben bestehen.");
         }

@@ -27,13 +27,13 @@ public class Adresse {
     public Adresse(String strasse, String hausnummer, String ort, String plz) {
 
         //Verwendung eines Regex, um nur Namen bestehend aus Groß- bzw. Kleinbuchstaben zu akzeptieren
-        String expressionGrossKlein = "^[a-zA-Z\\s]+";
-        if (!strasse.matches(expressionGrossKlein)) {
+        String expression = "(?U)[\\p{L}\\p{M}\\s'-]+";
+        if (!strasse.matches(expression)) {
             throw new IllegalArgumentException("Ein Straßenname darf nur aus Groß- bzw. Kleinbuchstaben bestehen.");
         }
         this.strasse = strasse;
 
-        if (!ort.matches(expressionGrossKlein)) {
+        if (!ort.matches(expression)) {
             throw new IllegalArgumentException("Ein Ortsname darf nur aus Groß- bzw. Kleinbuchstaben bestehen.");
         }
         this.ort = ort;

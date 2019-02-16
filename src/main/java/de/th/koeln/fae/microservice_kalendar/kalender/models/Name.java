@@ -18,7 +18,7 @@ public class Name {
     public Name(String name){
 
         //Verwendung eines Regex, um nur Namen bestehend aus Groß- bzw. Kleinbuchstaben zu akzeptieren
-        String expression = "^[a-zA-Z\\s]+";
+        String expression = "(?U)[\\p{L}\\p{M}\\s'-]+";
         if(!name.matches(expression)){
             throw new IllegalArgumentException("Ein Kalendername darf nur aus Groß- bzw. Kleinbuchstaben bestehen.");
         }
