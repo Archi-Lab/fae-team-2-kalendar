@@ -7,7 +7,10 @@ import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-
+/**
+ * Klasse zum Befüllen der Kalendereintrag-REST-Darstellung {@link KalendereintragResource}
+ * aus einer {@link Kalendereintrag} Entität
+ */
 public class KalendereintragResourceAssembler extends ResourceAssemblerSupport<Kalendereintrag, KalendereintragResource> {
 
     public KalendereintragResourceAssembler() {

@@ -3,6 +3,9 @@ package de.th.koeln.fae.microservice_kalendar.kalender.controller;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
+/**
+ * Klasse zum Befüllen der DVP-REST-Darstellung
+ */
 public class DVPResourceAssembler extends ResourceAssemblerSupport<DVP, DVPResource> {
 
     public DVPResourceAssembler() {

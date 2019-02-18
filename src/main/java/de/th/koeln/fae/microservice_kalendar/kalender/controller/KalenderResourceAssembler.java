@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+/**
+ * Klasse zum Befüllen der Kalender-REST-Darstellung {@link KalenderResource} aus einer {@link Kalender} Entität
+ */
 public class KalenderResourceAssembler extends ResourceAssemblerSupport<Kalender, KalenderResource> {
 
     public KalenderResourceAssembler() {

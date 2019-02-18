@@ -7,6 +7,9 @@ import org.springframework.hateoas.ResourceSupport;
 
 import java.util.UUID;
 
+/**
+ * Klasse zur REST-Darstellungsdefinition einer zu einem Kalender zugehörigen DVP
+ */
 public class DVPResource extends ResourceSupport {
     @JsonProperty
     public UUID id;
