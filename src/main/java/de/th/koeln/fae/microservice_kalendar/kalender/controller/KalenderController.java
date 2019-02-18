@@ -32,7 +32,12 @@ public class KalenderController {
         this.dvpRepository = dvpRepository;
     }
 
-
+    /**
+     * Simple Get Methode für einen spezifischen Kalender
+     *
+     * @param kalenderId ID des anzuzeigenden Kalenders
+     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+     */
     @GetMapping("/k/{kalenderId}")
     public ResponseEntity<?> getKalender(@PathVariable("kalenderId") final UUID kalenderId) {
         Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
@@ -47,6 +52,16 @@ public class KalenderController {
         return ResponseEntity.ok(resource);
     }
 
+    /**
+     * Post Methode zum Anlegen eines neuen Kalenders
+     *
+     * @param newKalender Neu anzulegender Kalender, die Attribute
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.Name}
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.Zeitzone}
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP}
+     *                    sind zu übergeben
+     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+     */
     @PostMapping("/k")
     public ResponseEntity<?> postKalender(@RequestBody Kalender newKalender) {
         Optional<DVP> referencedDVP = dvpRepository.findById(newKalender.getDvp().getId());
@@ -72,6 +87,17 @@ public class KalenderController {
         return new ResponseEntity<>(resource, HttpStatus.CREATED);
     }
 
+    /**
+     * Put Methode zum Updaten eines spezifischen Kalenders
+     *
+     * @param kalenderId ID des zu ändernden Kalenders
+     * @param newKalender Zu ändernder Kalender, die Attribute
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.Name},
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.Zeitzone} und
+     *                    {@link de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP}
+     *                    sind zu übergeben
+     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+     */
     @PutMapping("/k/{kalenderId}")
     public ResponseEntity<?> putKalender(@PathVariable("kalenderId") final UUID kalenderId,
                                          @RequestBody Kalender newKalender) {
@@ -96,23 +122,23 @@ public class KalenderController {
                     .body("\"Put\" method with kalendereintragListe not supported.");
         }
 
-//        newKalender.setKalendereintragListe(oldKalender.get().getKalendereintragListe());
-
-//        newKalender.setId(oldKalender.get().getId());
-
         oldKalender.get().setName(newKalender.getName());
         oldKalender.get().setZeitzone(newKalender.getZeitzone());
 
-        kalenderRepository.delete(oldKalender.get());
-//        kalenderRepository.save(newKalender);
+        kalenderRepository.save(oldKalender.get());
 
         KalenderResourceAssembler assembler = new KalenderResourceAssembler();
-//        KalenderResource resource = assembler.toResource(newKalender);
         KalenderResource resource = assembler.toResource(oldKalender.get());
 
         return ResponseEntity.ok(resource);
     }
 
+    /**
+     * Delete Methode zum Löschen eines spezifischen Kalenders
+     *
+     * @param kalenderId ID des zu löschenden Kalenders
+     * @return HTTP Status 204 (No Content)
+     */
     @DeleteMapping("/k/{kalenderId}")
     public ResponseEntity<?> deleteKalender(@PathVariable("kalenderId") final UUID kalenderId) {
         kalenderRepository.deleteById(kalenderId);

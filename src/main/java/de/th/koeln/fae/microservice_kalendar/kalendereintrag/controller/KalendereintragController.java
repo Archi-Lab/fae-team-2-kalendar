@@ -22,6 +22,7 @@ import java.util.UUID;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+
 @RepositoryRestController
 public class KalendereintragController {
 
@@ -36,6 +37,13 @@ public class KalendereintragController {
         this.kalenderRepository = kalenderRepository;
     }
 
+    /**
+     * Simple Get Methode für einen spezifischen Kalendereintrag
+     *
+     * @param kalenderId ID des zugehörigen Kalenders
+     * @param kalendereintragId ID des anzuzeigenden Kalendereintrags
+     * @return Kalendereintrag-Objekt
+     */
     @GetMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> getKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
                                                 @PathVariable("kalendereintragId") final UUID kalendereintragId) {
@@ -50,6 +58,13 @@ public class KalendereintragController {
         return  ResponseEntity.ok(resource);
     }
 
+    /**
+     * Post Methode zum Anlegen eines neuen Kalenders
+     *
+     * @param kalenderId ID des zugehörigen Kalenders
+     * @param newKalendereintrag Neu anzulegender Kalendereintrag
+     * @return Kalendereintrag-Objekt
+     */
     @PostMapping("/k/{kalenderId}/ke")
     public ResponseEntity<?> postKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
                                                                @RequestBody Kalendereintrag newKalendereintrag){
@@ -70,6 +85,14 @@ public class KalendereintragController {
         return new ResponseEntity<>(resource, HttpStatus.CREATED);
     }
 
+    /**
+     * Put Methode zum Updaten eines spezifischen Kalenders
+     *
+     * @param kalenderId ID des zugehörigen Kalenders
+     * @param kalendereintragId ID des zu ändernden Kalendereintrags
+     * @param newKalendereintrag Zu ändernder Kalendereintrag
+     * @return Kalendereintrag-Objekt
+     */
     @PutMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> putKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
                                                 @PathVariable("kalendereintragId") final UUID kalendereintragId,
@@ -98,6 +121,13 @@ public class KalendereintragController {
         return ResponseEntity.ok(resources);
     }
 
+    /**
+     * Delete Methode zum Löschen eines spezifischen Kalendereintrags
+     *
+     * @param kalenderId ID des zugehörigen Kalenders
+     * @param kalendereintragId ID des zu löschenden Kalendereintrags
+     * @return HTTP Status 204 (No Content)
+     */
     @Transactional
     @DeleteMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> deleteKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
