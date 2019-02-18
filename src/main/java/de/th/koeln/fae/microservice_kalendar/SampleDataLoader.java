@@ -19,10 +19,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
 Wird verwendet, um Beispieldaten zu erzeugen und in der Datenbank zu speichern.
@@ -30,14 +27,16 @@ Wird verwendet, um Beispieldaten zu erzeugen und in der Datenbank zu speichern.
 @Component
 public class SampleDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    private KalenderRepository kalenderRepository;
+    private final KalenderRepository kalenderRepository;
+    private final KalendereintragRepository kalendereintragRepository;
+    private final DVPRepository dvpRepository;
 
     @Autowired
-    private KalendereintragRepository kalendereintragRepository;
-
-    @Autowired
-    private DVPRepository dvpRepository;
+    public SampleDataLoader(KalenderRepository kalenderRepository, KalendereintragRepository kalendereintragRepository, DVPRepository dvpRepository) {
+        this.kalenderRepository = kalenderRepository;
+        this.kalendereintragRepository = kalendereintragRepository;
+        this.dvpRepository = dvpRepository;
+    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -53,7 +52,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         //füllt Kalendereintrag
         Beschreibung beschreibung = new Beschreibung("Ein neues Gebiss wird benötigt.");
-        Datum datum = new Datum(new GregorianCalendar(2019,02,10, 10, 20));
+        Datum datum = new Datum(new GregorianCalendar(2019, Calendar.FEBRUARY,10, 10, 20));
         Adresse adresse = new Adresse("Musterstrasse", "11", "Musterhausen", "51674");
         Titel titel = new Titel("Zahnarzt");
 
@@ -63,7 +62,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         kalendereintrag.setTitel(titel);
         kalendereintrag.setKalender(kalender);
 
-        List<Kalendereintrag> kalendereintragListe = new ArrayList<Kalendereintrag>();
+        List<Kalendereintrag> kalendereintragListe = new ArrayList<>();
         kalendereintragListe.add(kalendereintrag);
 
         //füllt Kalender

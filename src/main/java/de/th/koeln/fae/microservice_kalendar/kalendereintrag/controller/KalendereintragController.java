@@ -27,11 +27,14 @@ public class KalendereintragController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KalenderController.class);
 
-    @Autowired
-    private KalendereintragRepository kalendereintragRepository;
+    private final KalendereintragRepository kalendereintragRepository;
+    private final KalenderRepository kalenderRepository;
 
     @Autowired
-    private KalenderRepository kalenderRepository;
+    public KalendereintragController(KalendereintragRepository kalendereintragRepository, KalenderRepository kalenderRepository) {
+        this.kalendereintragRepository = kalendereintragRepository;
+        this.kalenderRepository = kalenderRepository;
+    }
 
     @GetMapping("/k/{kalenderId}/ke/{kalendereintragId}")
     public ResponseEntity<?> getKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
@@ -50,15 +53,12 @@ public class KalendereintragController {
     @PostMapping("/k/{kalenderId}/ke")
     public ResponseEntity<?> postKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
                                                                @RequestBody Kalendereintrag newKalendereintrag){
-
         Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-
         if(kalender.isEmpty()) {
             LOGGER.error("Kalender " + kalenderId + " not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Kalender " + kalenderId + "doesn't exist");
         }
-
         newKalendereintrag.setKalender(kalender.get());
 
         kalendereintragRepository.save(newKalendereintrag);
@@ -75,32 +75,27 @@ public class KalendereintragController {
                                                 @PathVariable("kalendereintragId") final UUID kalendereintragId,
                                                 @RequestBody Kalendereintrag newKalendereintrag) {
         final Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-
         if (kalender.isEmpty()) {
             LOGGER.error("Kalender " + kalenderId + " not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
         newKalendereintrag.setKalender(kalender.get());
 
         Optional<Kalendereintrag> oldKalendereintrag = kalendereintragRepository.findByKalender_IdAndId(kalenderId, kalendereintragId);
-
-        if(oldKalendereintrag.isPresent()){
-            newKalendereintrag.setId(oldKalendereintrag.get().getId());
-            kalendereintragRepository.save(newKalendereintrag);
-            Resource<Kalendereintrag> resources = new Resource<>(newKalendereintrag);
-
-            resources.add(linkTo(methodOn(KalendereintragController.class).putKalendereintrag(kalenderId, kalendereintragId, newKalendereintrag)).withSelfRel());
-
-            return ResponseEntity.ok(resources);
-        }
-        else{
+        if(oldKalendereintrag.isEmpty()){
             // This mode (creating at specified uuid) should not be supported
             LOGGER.error("Put method on non existent entries not supported");
 
             return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED)
                     .body("\"Put\" method on non existent entries not supported. Use \"Post\" instead.");
         }
+        newKalendereintrag.setId(oldKalendereintrag.get().getId());
+        kalendereintragRepository.save(newKalendereintrag);
+        Resource<Kalendereintrag> resources = new Resource<>(newKalendereintrag);
+
+        resources.add(linkTo(methodOn(KalendereintragController.class).putKalendereintrag(kalenderId, kalendereintragId, newKalendereintrag)).withSelfRel());
+
+        return ResponseEntity.ok(resources);
     }
 
     @Transactional
@@ -108,7 +103,6 @@ public class KalendereintragController {
     public ResponseEntity<?> deleteKalendereintrag(@PathVariable("kalenderId") final UUID kalenderId,
                                                 @PathVariable("kalendereintragId") final UUID kalendereintragId) {
         Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-
         if(kalender.isEmpty()) {
             LOGGER.error("Kalender " + kalenderId + " not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
