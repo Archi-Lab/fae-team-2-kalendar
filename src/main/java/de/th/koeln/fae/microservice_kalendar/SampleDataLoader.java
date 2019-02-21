@@ -57,6 +57,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Adresse adresse = new Adresse("Musterstrasse", "11", "Musterhausen", "51674");
         Titel titel = new Titel("Zahnarzt");
 
+        kalendereintrag.setId(UUID.fromString("36572ffd-080f-41d3-9049-cc6d540f7545"));
         kalendereintrag.setBeschreibung(beschreibung);
         kalendereintrag.setDatum(datum);
         kalendereintrag.setAdresse(adresse);
