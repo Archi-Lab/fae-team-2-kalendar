@@ -42,7 +42,7 @@ public class DvpConsumerConfiguration {
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, String.valueOf(false));
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // allows a pool of processes to divide the work of consuming and processing records
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "asi");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "kalender");
 
         return props;
     }

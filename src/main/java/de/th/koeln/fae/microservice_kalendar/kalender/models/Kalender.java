@@ -1,6 +1,7 @@
 package de.th.koeln.fae.microservice_kalendar.kalender.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.EventPublishingEntityListener;
 import de.th.koeln.fae.microservice_kalendar.infrastructure.eventing.produce.EventSource;
@@ -33,6 +34,7 @@ public class Kalender extends EntityUUID4 implements EventSource{
     private DVP dvp;
 
     @Version
+    @JsonIgnore
     private Long version;
 
     @Embedded
