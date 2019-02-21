@@ -43,6 +43,8 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         // legt dvp an
         final DVP dvp = new DVP();
+        //TODO: remove after debugging
+        dvp.setId(UUID.fromString("1741a82c-bfa0-497f-8559-a0911e3eccab"));
         dvp.setVorname(new Vorname("Max"));
         dvp.setNachname(new Nachname("Mustermann"));
         final DVP savedDVP = this.dvpRepository.save(dvp);

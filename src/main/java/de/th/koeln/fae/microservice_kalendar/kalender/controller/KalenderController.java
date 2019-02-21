@@ -5,15 +5,19 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.DVPRepository;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.KalenderRepository;
+import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -32,36 +36,51 @@ public class KalenderController {
         this.dvpRepository = dvpRepository;
     }
 
-    @GetMapping("/k")
+    @GetMapping(path="/k")
     public ResponseEntity<?> getKalenders(
-            @RequestParam(value="dvpid", required=false, defaultValue="") UUID dvpid){
-        Iterable<Kalender> kalenders;
-        Optional<DVP> dvp = dvpRepository.findById(dvpid);
-        if(dvp.isPresent()){
-            kalenders=kalenderRepository.findAllByDvp_Id(dvpid);
-        }
-        return ResponseEntity.notFound().build();
-    }
+            @RequestParam(value="dvpid", required=true, defaultValue="") final String dvpidString){
 
-    /**
-     * Simple Get Methode für einen spezifischen Kalender
-     *
-     * @param kalenderId ID des anzuzeigenden Kalenders
-     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
-     */
-    @GetMapping("/k/{kalenderId}")
-    public ResponseEntity<?> getKalender(@PathVariable("kalenderId") final UUID kalenderId) {
-        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-        if(kalender.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        LOGGER.info("trying new get method");
+        UUID dvpid = UUID.fromString(dvpidString);
+
+        Optional<DVP> dvp = dvpRepository.findById(dvpid);
+        if(dvp.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("DVP with ID \"" + dvpid + "\" does not exist");
         }
+
+        Iterable<Kalender> kalenders = kalenderRepository.findAllByDvp_Id(dvpid);
 
         KalenderResourceAssembler assembler = new KalenderResourceAssembler();
-        KalenderResource resource = assembler.toResource(kalender.get());
+        List<KalenderResource> kalenderResources = new ArrayList<>();
 
-        LOGGER.info("RETURN SPECIFIC KALENDER!");
-        return ResponseEntity.ok(resource);
+        for (Kalender kalender : kalenders) {
+            kalenderResources.add(assembler.toResource(kalender));
+        }
+
+        Resources<KalenderResource> resources = new Resources<>(kalenderResources);
+
+        return ResponseEntity.ok(resources);
     }
+
+//    /**
+//     * Simple Get Methode für einen spezifischen Kalender
+//     *
+//     * @param kalenderId ID des anzuzeigenden Kalenders
+//     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+//     */
+//    @GetMapping("/k/{kalenderId}")
+//    public ResponseEntity<?> getKalender(@PathVariable("kalenderId") final UUID kalenderId) {
+//        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
+//        if(kalender.isEmpty()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        KalenderResourceAssembler assembler = new KalenderResourceAssembler();
+//        KalenderResource resource = assembler.toResource(kalender.get());
+//
+//        return ResponseEntity.ok(resource);
+//    }
 
     /**
      * Post Methode zum Anlegen eines neuen Kalenders

@@ -6,7 +6,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.UUID;
 
-@RepositoryRestResource(exported = false)
+//@RepositoryRestResource(exported = false)
+@RepositoryRestResource(path = "dvps")
 public interface DVPRepository extends CrudRepository<DVP, UUID> {
 
 }
