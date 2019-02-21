@@ -9,5 +9,7 @@ import java.util.UUID;
 
 @RepositoryRestResource(path = "k")
 public interface KalenderRepository extends CrudRepository<Kalender, UUID> {
+
+    Iterable<Kalender> findAllByDvp_Id(UUID dvp_id);
 }
 

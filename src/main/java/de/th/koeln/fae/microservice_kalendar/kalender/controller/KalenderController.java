@@ -32,6 +32,17 @@ public class KalenderController {
         this.dvpRepository = dvpRepository;
     }
 
+    @GetMapping("/k")
+    public ResponseEntity<?> getKalenders(
+            @RequestParam(value="dvpid", required=false, defaultValue="") UUID dvpid){
+        Iterable<Kalender> kalenders;
+        Optional<DVP> dvp = dvpRepository.findById(dvpid);
+        if(dvp.isPresent()){
+            kalenders=kalenderRepository.findAllByDvp_Id(dvpid);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     /**
      * Simple Get Methode für einen spezifischen Kalender
      *
