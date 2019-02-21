@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.UUID;
 
 
-@RepositoryRestResource()//(exported = false)
+@RepositoryRestResource(path="k")
 public interface KalenderRepository extends CrudRepository<Kalender, UUID> {
 
     Iterable<Kalender> findAllByDvp_Id(UUID dvp_id);

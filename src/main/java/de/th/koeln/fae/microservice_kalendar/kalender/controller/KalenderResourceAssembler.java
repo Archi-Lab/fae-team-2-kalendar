@@ -32,7 +32,7 @@ public class KalenderResourceAssembler extends ResourceAssemblerSupport<Kalender
             resource.kalendereintragListe.add(kalendereintragResourceAssembler.toResource(kalendereintrag));
         }
 
-//        resource.add(linkTo(methodOn(KalenderController.class).getKalender(kalender.getId())).withSelfRel());
+        resource.add(linkTo(methodOn(KalenderController.class).getKalender(kalender.getId())).withSelfRel());
         return resource;
     }
 }

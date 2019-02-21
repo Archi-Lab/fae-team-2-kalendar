@@ -5,12 +5,10 @@ import de.th.koeln.fae.microservice_kalendar.kalender.models.DVP.DVP;
 import de.th.koeln.fae.microservice_kalendar.kalender.models.Kalender;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.DVPRepository;
 import de.th.koeln.fae.microservice_kalendar.kalender.repositories.KalenderRepository;
-import de.th.koeln.fae.microservice_kalendar.kalendereintrag.models.Kalendereintrag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,12 +34,15 @@ public class KalenderController {
         this.dvpRepository = dvpRepository;
     }
 
+    /**
+     * Get Methode um alle Kalender, die einer bestimmten DVP zugeornet sind abzurufen
+     *
+     * @param dvpid ID der zugeorneten DVP
+     * @return Liste von Kalender-Objekten, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+     */
     @GetMapping(path="/k")
     public ResponseEntity<?> getKalenders(
-            @RequestParam(value="dvpid", required=true, defaultValue="") final String dvpidString){
-
-        LOGGER.info("trying new get method");
-        UUID dvpid = UUID.fromString(dvpidString);
+            @RequestParam(value="dvpid", required=true) UUID dvpid){
 
         Optional<DVP> dvp = dvpRepository.findById(dvpid);
         if(dvp.isEmpty()){
@@ -49,38 +50,38 @@ public class KalenderController {
                     .body("DVP with ID \"" + dvpid + "\" does not exist");
         }
 
-        Iterable<Kalender> kalenders = kalenderRepository.findAllByDvp_Id(dvpid);
+        Iterable<Kalender> kalendersList = kalenderRepository.findAllByDvp_Id(dvpid);
 
         KalenderResourceAssembler assembler = new KalenderResourceAssembler();
-        List<KalenderResource> kalenderResources = new ArrayList<>();
+        List<KalenderResource> kalenders = new ArrayList<>();
 
-        for (Kalender kalender : kalenders) {
-            kalenderResources.add(assembler.toResource(kalender));
+        for (Kalender kalender : kalendersList) {
+            kalenders.add(assembler.toResource(kalender));
         }
 
-        Resources<KalenderResource> resources = new Resources<>(kalenderResources);
+        Resources<KalenderResource> resources = new Resources<>(kalenders);
 
         return ResponseEntity.ok(resources);
     }
 
-//    /**
-//     * Simple Get Methode für einen spezifischen Kalender
-//     *
-//     * @param kalenderId ID des anzuzeigenden Kalenders
-//     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
-//     */
-//    @GetMapping("/k/{kalenderId}")
-//    public ResponseEntity<?> getKalender(@PathVariable("kalenderId") final UUID kalenderId) {
-//        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
-//        if(kalender.isEmpty()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//
-//        KalenderResourceAssembler assembler = new KalenderResourceAssembler();
-//        KalenderResource resource = assembler.toResource(kalender.get());
-//
-//        return ResponseEntity.ok(resource);
-//    }
+    /**
+     * Simple Get Methode für einen spezifischen Kalender
+     *
+     * @param kalenderId ID des anzuzeigenden Kalenders
+     * @return Kalender-Objekt, Darstellung festgelegt durch {@link KalenderResourceAssembler}
+     */
+    @GetMapping("/k/{kalenderId}")
+    public ResponseEntity<?> getKalender(@PathVariable("kalenderId") final UUID kalenderId) {
+        Optional<Kalender> kalender = kalenderRepository.findById(kalenderId);
+        if(kalender.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        KalenderResourceAssembler assembler = new KalenderResourceAssembler();
+        KalenderResource resource = assembler.toResource(kalender.get());
+
+        return ResponseEntity.ok(resource);
+    }
 
     /**
      * Post Methode zum Anlegen eines neuen Kalenders

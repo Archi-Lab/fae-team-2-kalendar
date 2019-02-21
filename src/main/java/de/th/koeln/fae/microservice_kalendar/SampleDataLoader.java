@@ -43,7 +43,6 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
 
         // legt dvp an
         final DVP dvp = new DVP();
-        //TODO: remove after debugging
         dvp.setId(UUID.fromString("1741a82c-bfa0-497f-8559-a0911e3eccab"));
         dvp.setVorname(new Vorname("Max"));
         dvp.setNachname(new Nachname("Mustermann"));
@@ -71,6 +70,7 @@ public class SampleDataLoader implements ApplicationListener<ContextRefreshedEve
         Name name = new Name("Artztermine");
         Zeitzone zeitzone = new Zeitzone(TimeZone.getTimeZone("CET"));
 
+        kalender.setId(UUID.fromString("f165a802-f962-418d-8367-179db581209e"));
         kalender.setName(name);
         kalender.setZeitzone(zeitzone);
         kalender.setKalendereintragListe(kalendereintragListe);
